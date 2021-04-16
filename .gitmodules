@@ -1,0 +1,3 @@
+[submodule "student-registration-platform-front-end"]
+	path = student-registration-platform-front-end
+	url = git@github.com-sreekar2307:sreekar2307/student-registration-platform-front-end.git
