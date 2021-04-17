@@ -4,14 +4,14 @@ module V1
 
     # GET /courses
     def index
-      @courses = Course.where(degree_ids: params[:degree_ids])
+      @courses = Course.where(degree_id: params[:degree_id])
 
-      render json: @courses
+      render json: @courses, each_serializer: CourseSerializer::CourseLiteSerializer
     end
 
     # GET /courses/1
     def show
-      render json: @course
+      render json: @course, serializer: CourseSerializer::CourseDetailSerializer
     end
 
     private

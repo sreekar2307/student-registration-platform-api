@@ -6,12 +6,12 @@ module V1
     def index
       @degrees = Degree.all
 
-      render json: @degrees
+      render json: @degrees, each_serializer: DegreeSerializer::DegreeLiteSerializer
     end
 
     # GET /degrees/1
     def show
-      render json: @degree
+      render json: @degree, serializer: DegreeSerializer::DegreeDetailSerializer
     end
 
     private

@@ -53,8 +53,7 @@ module V1
     end
 
     def query_params
-      params.fetch(:query, {}).permit(:page_number, filter: { courses: [], degrees: [] },
-                                      sort: [:id, :enrollment_no, :name, :email, :id])
+      params.fetch(:query, {}).permit(:page_number, :sort, filter: [:courses, :degrees])
     end
   end
 

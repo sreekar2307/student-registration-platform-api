@@ -42,7 +42,6 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
@@ -57,4 +56,15 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
   config.hosts.clear
   config.action_controller.action_on_unpermitted_parameters = :raise
+  config.middleware.insert_before 0, Rack::Cors do
+    allow do
+      origins 'localhost:4000', 'localhost:3001'
+      resource '*',
+               :headers => :any,
+               :methods => [:get, :post, :options, :put, :patch, :delete],
+               :credentials => true,
+               :max_age => -1,
+               :expose => '*'
+    end
+  end
 end
