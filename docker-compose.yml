@@ -20,7 +20,10 @@ services:
     volumes:
     - db_data:/var/lib/postgresql/data
   api:
-    build: .
+    build:
+      context: .
+      args:
+        environment: ${rails_env}
     container_name: student-registration-platform-api
     environment:
       - RAILS_ENV=${rails_env}
