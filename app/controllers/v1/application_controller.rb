@@ -1,6 +1,7 @@
 module V1
   class ApplicationController < ActionController::API
-    rescue_from ActionController::UnpermittedParameters, with: :handle_unpermitted_params
+    rescue_from ActionController::UnpermittedParameters, with: :handle_exception
+    rescue_from ActiveRecord::RecordNotFound, with: :handle_exception
 
     private
 
@@ -18,7 +19,7 @@ module V1
       }
     end
 
-    def handle_unpermitted_params(exception)
+    def handle_exception(exception)
       render json: { error: { message: exception } }, status: :bad_request
     end
   end
