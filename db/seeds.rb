@@ -29,8 +29,10 @@ end
 end
 
 Student.all.each do |student|
-  count = rand 1..(COURSES.size + 1)
-  courses = Course.all.sample(count)
+  degree = student.degree
+  courses = degree.courses
+  count = rand 1..(courses.size + 1)
+  courses = courses.sample(count)
   courses.each do |course|
     StudentsCourses.create(course: course, student: student)
   end
