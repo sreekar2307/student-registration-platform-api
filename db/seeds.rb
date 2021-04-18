@@ -10,14 +10,36 @@ DEGREE = ["Associate's degree",
           "Bachelor's degree",
           "Master's degree",
           "Doctorate"]
-COURSES = ["Machine Learning", "Artificial Intelligence",
+COURSES = ["Machine Learning", "Artificial Intelligence", "School of Engineering",
+           "Aeronautics & Astronautics (AA)",
+           "Bioengineering (BIOE)",
+           "Chemical Engineering (CHEMENG)",
+           "Civil & Environmental Engineering (CEE)",
+           "Computational & Mathematical Engineering (CME)",
+           "Computer Science (CS)",
+           "Design Institute (DESINST)",
+           "Electrical Engineering (EE)",
+           "Engineering (ENGR)",
+           "Management Science & Engineering (MS&E)",
+           "Materials Science & Engineer (MATSCI)",
+           "Mechanical Engineering (ME)",
+           "Scientific Computing & Comput'l Math (SCCM)",
+           "Earth Systems (EARTHSYS)",
+           "Earth, Energy, & Environmental Sciences (EEES)",
+           "Energy Resources Engineering (ENERGY)",
+           "Environment and Resources (ENVRES)",
+           "Earth System Science (ESS)",
+           "Geological Sciences (GEOLSCI)",
+           "Geophysics (GEOPHYS)",
+           "Sustainability Science and Practice (SUST)",
+           "Woods Institute for the Environment (ENVRINST)",
            "Block Chain",
            "Computer Vision", "Predictive Analysis", "Image Processing", "VLSI", "Embedded Systems"]
 
-DEGREE.each do |course|
+DEGREE.uniq.each do |course|
   Degree.create(name: course, description: Faker::Lorem.sentence(word_count: 50))
 end
-COURSES.each do |course|
+COURSES.uniq.each do |course|
   degrees = Degree.all
   Course.create(name: course, description: Faker::Lorem.sentence(word_count: 50), degree: degrees.sample)
 end
